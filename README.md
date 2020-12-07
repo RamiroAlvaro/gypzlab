@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/RamiroAlvaro/gypzlab.svg?branch=main)](https://travis-ci.org/RamiroAlvaro/gypzlab)
 [![codecov](https://codecov.io/gh/RamiroAlvaro/gypzlab/branch/main/graph/badge.svg?token=896DTNWXRD)](https://codecov.io/gh/RamiroAlvaro/gypzlab)
 
 ## Como desenvolver?
