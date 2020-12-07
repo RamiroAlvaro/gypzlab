@@ -39,17 +39,16 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """
-    App base User class.
-    Email and password are required. Other fields are optional.
+    App core User class.
     """
 
     first_name = models.CharField(_('first name'), max_length=150)
     last_name = models.CharField(_('last name'), max_length=150)
     email = models.EmailField(_('email address'), unique=True)
     cpf = models.CharField(max_length=20, unique=True)
-    phone = models.CharField(max_length=30)
-    salary = models.FloatField()
-    birthdate = models.DateTimeField()
+    phone = models.CharField('telefone', max_length=30)
+    salary = models.FloatField('salário')
+    birthdate = models.DateField('data de nascimento')
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
