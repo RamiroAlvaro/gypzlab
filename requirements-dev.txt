@@ -3,3 +3,4 @@ flake8==3.8.4
 pytest-django==4.1.0
 pytest-cov==2.10.1
 codecov==2.1.10
+model-bakery==1.2.1
