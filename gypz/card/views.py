@@ -1,4 +1,6 @@
 from rest_framework import status
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -27,6 +29,8 @@ def get_credit(salary):
 
 
 class CardViewSet(ModelViewSet):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
@@ -34,4 +38,13 @@ class CardViewSet(ModelViewSet):
         salary = UserSerializer(request.user).data['salary']
         card = Card.objects.create(**get_credit(salary), user=request.user)
         serializer = CardSerializer(card)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def list(self, request, *args, **kwargs):
+        if request.user.is_superuser:
+            cards = Card.objects.all()
+        else:
+            cards = Card.objects.filter(user=request.user)
+        serializer = CardSerializer(cards, many=True)
+        return Response(serializer.data)
