@@ -1,3 +1,11 @@
-# from django.shortcuts import render
+from django.contrib.auth import get_user_model
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
+from gypz.core.serializers import UserSerializer
+
+
+class UserViewSet(ModelViewSet):
+
+    user = get_user_model()
+    queryset = user.objects.all()
+    serializer_class = UserSerializer

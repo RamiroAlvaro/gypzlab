@@ -7,3 +7,4 @@ class Card(models.Model):
     score = models.IntegerField()
     credit = models.FloatField()
     solicitation_status = models.BooleanField(default=False)
+    solicitation_date = models.DateField(auto_now_add=True)
