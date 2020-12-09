@@ -72,3 +72,18 @@ def resp_anonymous_user(client, db):
 
 def test_status_code_anonymous_user(resp_anonymous_user):
     assert_equal(resp_anonymous_user.status_code, 403)
+
+
+@pytest.fixture
+def resp_detail(client_logged_user, db, card):
+    return client_logged_user.get(reverse('card-detail', kwargs={'pk': '1'}))
+
+
+def test_status_code_detail(resp_detail):
+    assert_equal(resp_detail.status_code, 200)
+
+
+def test_content_detail(resp_detail):
+    assert_equal(resp_detail.data['score'], 299)
+    assert_equal(resp_detail.data['credit'], 0.0)
+    assert_false(resp_detail.data['solicitation_status'])
