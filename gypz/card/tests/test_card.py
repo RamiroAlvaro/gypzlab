@@ -76,7 +76,7 @@ def test_status_code_anonymous_user(resp_anonymous_user):
 
 @pytest.fixture
 def resp_detail(client_logged_user, db, card):
-    return client_logged_user.get(reverse('card-detail', kwargs={'pk': '1'}))
+    return client_logged_user.get(reverse('card-detail', kwargs={'pk': card.id}))
 
 
 def test_status_code_detail(resp_detail):
