@@ -29,8 +29,8 @@ def get_credit(salary):
 
 
 class CardViewSet(ModelViewSet):
-    authentication_classes = [SessionAuthentication, TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    authentication_classes = (SessionAuthentication, TokenAuthentication)
+    permission_classes = (IsAuthenticated,)
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 

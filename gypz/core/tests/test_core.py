@@ -41,7 +41,7 @@ def resp_post(client, db):
         'first_name': 'ramiro',
         'last_name': 'alvaro',
         'email': 'ramiroalvaro.ra@gmail.com',
-        'cpf': '700.673.051-13',
+        'cpf': '952.415.790-01',
         'phone': '31991387178',
         'salary': 10000.0,
         'birthdate': '1975-11-29'

@@ -18,7 +18,7 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from gypz.card.views import CardViewSet
-from gypz.core.views import UserViewSet
+from gypz.core.views import UserViewSet, CustomObtainAuthToken
 
 
 router = routers.DefaultRouter()
@@ -29,4 +29,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api-token-auth/', obtain_auth_token),
     path('admin/', admin.site.urls),
+    path('authenticate/', CustomObtainAuthToken.as_view()),
 ]
